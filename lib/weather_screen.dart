@@ -26,6 +26,45 @@ class _WeatherScreenState extends State<WeatherScreen> {
           ),
         ],
       ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              child: Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)
+                ),
+                child: const Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        '300 F',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 34,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Icon(
+                        Icons.cloud,
+                        size: 64,  
+                      ),
+                      Text(
+                        'Rain', 
+                        style: TextStyle(fontSize: 20),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ]
+        ),
+      ),
     );
   }
 }
