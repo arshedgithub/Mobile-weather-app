@@ -18,7 +18,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
             fontWeight: FontWeight.bold, 
           ),
         ),
-        centerTitle: true ,
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: (){}, 
+            icon: const Icon(Icons.refresh)
+          ),
+        ],
       ),
     );
   }
