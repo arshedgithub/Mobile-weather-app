@@ -44,7 +44,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     child: Column(
                       children: [
                         Text(
-                          '300 F',
+                          '300K',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 34,
