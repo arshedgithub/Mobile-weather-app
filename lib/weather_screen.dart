@@ -82,6 +82,63 @@ class _WeatherScreenState extends State<WeatherScreen> {
               HourlyForecastItem(),
               HourlyForecastItem(),
             ]),
+          ),
+          const SizedBox(height: 20),
+          const Text(
+            'Additional Information',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                children: [
+                  Icon(
+                    Icons.water_drop,
+                    size: 40,
+                  ),
+                  SizedBox(height: 8),
+                  Text('Humidity'),
+                  Text(
+                    '94',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Icon(
+                    Icons.air,
+                    size: 40,
+                  ),
+                  Text('wind speed'),
+                  Text(
+                    '94',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Icon(
+                    Icons.umbrella_sharp,
+                    size: 40,
+                  ),
+                  Text('Pressure'),
+                  Text(
+                    '94',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              )
+            ],
           )
         ]),
       ),
