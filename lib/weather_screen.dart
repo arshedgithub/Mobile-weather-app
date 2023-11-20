@@ -74,7 +74,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 15),
           const SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(children: [
@@ -93,13 +93,25 @@ class _WeatherScreenState extends State<WeatherScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 10),
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              AdditionalInfo(),
-              AdditionalInfo(),
-              AdditionalInfo(),
+              AdditionalInfo(
+                icon: Icons.water_drop,
+                label: 'Humidity',
+                value: '91',
+              ),
+              AdditionalInfo(
+                icon: Icons.air,
+                label: 'Wind speed',
+                value: '7.5',
+              ),
+              AdditionalInfo(
+                icon: Icons.beach_access,
+                label: 'Pressure',
+                value: '1000',
+              ),
             ],
           )
         ]),
