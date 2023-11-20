@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:weather_app/addiotional_info.dart';
+import 'package:weather_app/additional_info.dart';
 import 'package:weather_app/hourly_forecast_item.dart';
 
 class WeatherScreen extends StatefulWidget {
