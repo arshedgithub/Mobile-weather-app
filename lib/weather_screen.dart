@@ -78,11 +78,31 @@ class _WeatherScreenState extends State<WeatherScreen> {
           const SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(children: [
-              HourlyForecastItem(),
-              HourlyForecastItem(),
-              HourlyForecastItem(),
-              HourlyForecastItem(),
-              HourlyForecastItem(),
+              HourlyForecastItem(
+                time: '00:00',
+                icon: Icons.cloud,
+                temperature: '298.20K',
+              ),
+              HourlyForecastItem(
+                time: '03:00',
+                icon: Icons.cloud,
+                temperature: '300.20K',
+              ),
+              HourlyForecastItem(
+                time: '06:00',
+                icon: Icons.sunny,
+                temperature: '301.79K',
+              ),
+              HourlyForecastItem(
+                time: '09:00',
+                icon: Icons.sunny,
+                temperature: '304.20K',
+              ),
+              HourlyForecastItem(
+                time: '12:00',
+                icon: Icons.cloud,
+                temperature: '301.39K',
+              ),
             ]),
           ),
           const SizedBox(height: 20),
