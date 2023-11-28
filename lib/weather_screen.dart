@@ -14,20 +14,14 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  double temp = 0;
-  bool isLoading = false;
-
   @override
   void initState() {
     super.initState();
     getCurrentWeather();
   }
 
-  Future getCurrentWeather() async {
+  Future<Map<String, dynamic>> getCurrentWeather() async {
     try {
-      setState(() {
-        isLoading = true;
-      });
       String cityName = 'London';
 
       final res = await http.get(Uri.parse(
@@ -38,11 +32,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       if (data['cod'] != '200') {
         throw "An unexpected error occured";
       }
-
-      setState(() {
-        temp = data['list'][0]['main']['temp'];
-        isLoading = false;
-      });
+      return data;
     } catch (e) {
       throw e.toString();
     }
@@ -63,9 +53,22 @@ class _WeatherScreenState extends State<WeatherScreen> {
           IconButton(onPressed: () {}, icon: const Icon(Icons.refresh)),
         ],
       ),
-      body: isLoading
-          ? const CircularProgressIndicator()
-          : Padding(
+      body: FutureBuilder(
+          future: getCurrentWeather(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              // adaptive is use to adapt this widget to both ios and android
+              return const Center(child: CircularProgressIndicator.adaptive());
+            }
+
+            if (snapshot.hasError) {
+              return Text(snapshot.error.toString());
+            }
+
+            final data = snapshot.data!;
+            final currentTemp = data['list'][0]['main']['temp'];
+
+            return Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +88,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               child: Column(
                                 children: [
                                   Text(
-                                    '$temp K',
+                                    '$currentTemp K',
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 34,
@@ -176,7 +179,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       ],
                     )
                   ]),
-            ),
+            );
+          }),
     );
   }
 }
