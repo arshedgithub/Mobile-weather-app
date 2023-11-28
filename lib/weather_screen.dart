@@ -64,7 +64,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
         ],
       ),
       body: isLoading
-          ? const RefreshProgressIndicator()
+          ? const CircularProgressIndicator()
           : Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
