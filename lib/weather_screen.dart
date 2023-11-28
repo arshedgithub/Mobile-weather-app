@@ -122,41 +122,28 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     ),
                     const SizedBox(height: 20),
                     const Text(
-                      'Weather Forecast',
+                      'Hourly Forecast',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 15),
-                    const SingleChildScrollView(
+                    SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(children: [
-                        HourlyForecastItem(
-                          time: '00:00',
-                          icon: Icons.cloud,
-                          temperature: '298.20K',
-                        ),
-                        HourlyForecastItem(
-                          time: '03:00',
-                          icon: Icons.cloud,
-                          temperature: '300.20K',
-                        ),
-                        HourlyForecastItem(
-                          time: '06:00',
-                          icon: Icons.sunny,
-                          temperature: '301.79K',
-                        ),
-                        HourlyForecastItem(
-                          time: '09:00',
-                          icon: Icons.sunny,
-                          temperature: '304.20K',
-                        ),
-                        HourlyForecastItem(
-                          time: '12:00',
-                          icon: Icons.cloud,
-                          temperature: '301.39K',
-                        ),
+                        for (int i = 1; i <= 5; i++)
+                          HourlyForecastItem(
+                            time: data['list'][i]['dt'].toString(),
+                            icon: (data['list'][i]['weather'][0]['main'] ==
+                                        'Clouds' ||
+                                    data['list'][i]['weather'][0]['main'] ==
+                                        'Rain')
+                                ? Icons.cloud
+                                : Icons.sunny,
+                            temperature:
+                                data['list'][i]['main']['temp'].toString(),
+                          )
                       ]),
                     ),
                     const SizedBox(height: 20),
