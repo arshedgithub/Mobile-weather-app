@@ -69,6 +69,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
             final currentWeatherData = data['list'][0];
             final currentTemp = currentWeatherData['main']['temp'];
+            final currentPressure = currentWeatherData['main']['pressure'];
+            final currentHumidity = currentWeatherData['main']['humidity'];
+            final currentWindSpeed = currentWeatherData['wind']['speed'];
+
             final currentSky = currentWeatherData['weather'][0]['main'];
 
             return Padding(
@@ -164,23 +168,23 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         AdditionalInfo(
                           icon: Icons.water_drop,
                           label: 'Humidity',
-                          value: '91',
+                          value: currentHumidity.toString(),
                         ),
                         AdditionalInfo(
                           icon: Icons.air,
                           label: 'Wind speed',
-                          value: '7.5',
+                          value: currentWindSpeed.toString(),
                         ),
                         AdditionalInfo(
                           icon: Icons.beach_access,
                           label: 'Pressure',
-                          value: '1000',
+                          value: currentPressure.toString(),
                         ),
                       ],
                     )
