@@ -147,22 +147,27 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     //   ]),
                     // ),
 
-                    // items will build when scrolling
-                    ListView.builder(
-                        itemCount: 5,
-                        itemBuilder: (context, index) {
-                          final hourlyForecast = data['list'][index + 1];
-                          final hourlySky =
-                              hourlyForecast['weather'][0]['main'];
-                          return HourlyForecastItem(
-                            time: hourlyForecast['dt'].toString(),
-                            icon: (hourlySky == 'Clouds' || hourlySky == 'Rain')
-                                ? Icons.cloud
-                                : Icons.sunny,
-                            temperature:
-                                hourlyForecast['main']['temp'].toString(),
-                          );
-                        }),
+                    SizedBox(
+                      height: 140,
+                      // items will build when scrolling
+                      child: ListView.builder(
+                          itemCount: 5,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            final hourlyForecast = data['list'][index + 1];
+                            final hourlySky =
+                                hourlyForecast['weather'][0]['main'];
+                            return HourlyForecastItem(
+                              time: hourlyForecast['dt'].toString(),
+                              icon:
+                                  (hourlySky == 'Clouds' || hourlySky == 'Rain')
+                                      ? Icons.cloud
+                                      : Icons.sunny,
+                              temperature:
+                                  hourlyForecast['main']['temp'].toString(),
+                            );
+                          }),
+                    ),
                     const SizedBox(height: 20),
                     const Text(
                       'Additional Information',
