@@ -51,7 +51,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
         ),
         centerTitle: true,
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.refresh)),
+          IconButton(
+              onPressed: () {
+                setState(() {});
+              },
+              icon: const Icon(Icons.refresh)),
         ],
       ),
       body: FutureBuilder(
@@ -130,24 +134,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    // SingleChildScrollView(
-                    //   scrollDirection: Axis.horizontal,
-                    //   child: Row(children: [
-                    //     for (int i = 0; i <= 5; i++)
-                    //       HourlyForecastItem(
-                    //         time: data['list'][i + 1]['dt'].toString(),
-                    //         icon: (data['list'][i + 1]['weather'][0]['main'] ==
-                    //                     'Clouds' ||
-                    //                 data['list'][i + 1]['weather'][0]['main'] ==
-                    //                     'Rain')
-                    //             ? Icons.cloud
-                    //             : Icons.sunny,
-                    //         temperature:
-                    //             data['list'][i]['main']['temp'].toString(),
-                    //       )
-                    //   ]),
-                    // ),
-
                     SizedBox(
                       height: 140,
                       // items will build when scrolling
